@@ -6,6 +6,9 @@ export class Property{
     @PrimaryGeneratedColumn("increment")
     id: number;
 
+    @Column({type: 'varchar', length: 60})
+    name: string;
+
     @Column({type: 'varchar', length: 20})
     total_area: string;
 
