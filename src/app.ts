@@ -1,5 +1,6 @@
 import  Express  from "express";
 import "express-async-errors";
+import { errorHandler } from "./errors/errorHandler.error";
 
 
 const app = Express();
@@ -10,6 +11,6 @@ app.use("/login", loginRoutes);
 app.use("/imovel", imovelRoutes);
 */
 
-/* app.use(errorHandler) */
+app.use(errorHandler);
 
 export default app;
