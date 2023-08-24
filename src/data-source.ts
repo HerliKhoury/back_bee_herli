@@ -1,5 +1,7 @@
 import { DataSource } from "typeorm";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 export const AppDataSource = new DataSource({
     migrationsTableName: 'migrations',
@@ -8,7 +10,7 @@ export const AppDataSource = new DataSource({
     port: 5432,
     username: process.env.USER!,
     password: process.env.PASSWORD!,
-    database: 'crud_user',
+    database: process.env.DATA_BASE!,
     logging: false,
     synchronize: false,
     name: 'default',
