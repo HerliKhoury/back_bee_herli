@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { TProperty, TPropertyReq, TPropertyRes } from "../interfaces/property.interfaces";
 import { createPropertyService } from "../services/property/createProperty.service";
 import { listPropertiesService } from "../services/property/listProperties.service";
+import { deletePropertyService } from "../services/property/deleteProperty.service";
 
 
 export const createPropertyController = async (
@@ -31,4 +32,15 @@ export const listPropertiesController = async (
     const propertiesList: TPropertyRes[] | null = await listPropertiesService(userId);
 
     return res.status(201).json(propertiesList);
+};
+
+export const deletePropertyController = async(
+    req: Request,
+    res: Response
+): Promise<Response>=> {
+    const propertyId: number = parseInt(req.params.id);
+
+    await deletePropertyService(propertyId);
+
+    return res.status(204).send();
 };
