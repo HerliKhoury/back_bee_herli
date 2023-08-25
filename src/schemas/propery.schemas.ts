@@ -17,3 +17,14 @@ export const propertySchemaReq = propertySchema.extend({
 export const propertySchemaRes = propertySchema.extend({
     id: z.number().int().positive()
 });
+
+
+
+export const propertySchemaPartial = z.object({
+    name: z.string().max(60).optional(),
+    total_area: z.string().max(20).optional(),
+    built_area: z.string().max(20).optional(),
+    address: z.string().max(60).optional(),
+    zip_code: z.string().max(8).optional(),
+    price: z.string().max(20).optional()
+});  

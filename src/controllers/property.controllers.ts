@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { TProperty, TPropertyReq, TPropertyRes, TPropertyUpdate } from "../interfaces/property.interfaces";
+import { 
+    TProperty, 
+    TPropertyReq, 
+    TPropertyRes, 
+    TPropertyUpdate 
+} from "../interfaces/property.interfaces";
 import { createPropertyService } from "../services/property/createProperty.service";
 import { listPropertiesService } from "../services/property/listProperties.service";
 import { deletePropertyService } from "../services/property/deleteProperty.service";
