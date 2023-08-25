@@ -23,9 +23,7 @@ export const createPropertyController = async (
         ...newPropertyData,
         userId: userId
     }
-
     const newProperty: TPropertyRes = await createPropertyService(newPropertyReq);
-
     return res.status(201).json(newProperty);
 };
 

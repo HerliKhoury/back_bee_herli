@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
-import { TProperty, TPropertyReq, TPropertyRes } from "../../interfaces/property.interfaces";
+import { TPropertyReq, TPropertyRes } from "../../interfaces/property.interfaces";
 import { Property } from "../../entities/property.entity";
 import { AppDataSource } from "../../data-source";
 import { propertySchemaRes } from "../../schemas/propery.schemas";
+import { MyError } from "../../errors/myError.error";
 
 
 export const createPropertyService = async (
@@ -11,11 +12,26 @@ export const createPropertyService = async (
 
     const propertyRepo: Repository<Property> = AppDataSource.getRepository(Property);
 
-    const newProperty: TPropertyRes = propertyRepo.create(newPropertyData);
+    const newProperty: Property = new Property();
+    newProperty.name = newPropertyData.name;
+    newProperty.total_area = newPropertyData.total_area;
+    newProperty.built_area = newPropertyData.built_area;
+    newProperty.address = newPropertyData.address;
+    newProperty.zip_code = newPropertyData.zip_code;
+    newProperty.price = newPropertyData.price;
+    newProperty.user = newPropertyData.userId;
 
-    const validProperty: TPropertyRes = propertySchemaRes.parse(newProperty);
+    const property: Property | null = await propertyRepo.findOneBy({
+        name: newPropertyData.name
+    });
 
-    await propertyRepo.save(validProperty);
-    
-    return validProperty;
+    if(property){
+        throw new MyError("Nome já utilizado", 409)
+    }else{
+        const savedProperty = await propertyRepo.save(newProperty);
+
+        const validProperty: TPropertyRes = propertySchemaRes.parse(savedProperty);
+
+        return validProperty;
+    }
 }

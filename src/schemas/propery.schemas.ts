@@ -18,8 +18,6 @@ export const propertySchemaRes = propertySchema.extend({
     id: z.number().int().positive()
 });
 
-
-
 export const propertySchemaPartial = z.object({
     name: z.string().max(60).optional(),
     total_area: z.string().max(20).optional(),

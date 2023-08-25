@@ -19,7 +19,7 @@ export const createSessionService = async (
     });
 
     if (!user) {
-        throw new MyError("Credênciais inválidas", 401);
+        throw new MyError("Credênciais inválidas mail", 401);
     };
 
     const passwordMatch = await compare(loginData.password, user.password);

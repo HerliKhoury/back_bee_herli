@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "./user.entity";
 
 @Entity("property")
@@ -24,6 +24,7 @@ export class Property{
     @Column({type: 'varchar', length: 20})
     price: string;
 
-    @ManyToOne(() => User )
-    user: User;
+    @ManyToOne(() => User)
+    @JoinColumn({ name: 'userId' })
+    user: number;
 }
