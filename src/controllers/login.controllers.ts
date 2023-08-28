@@ -10,5 +10,5 @@ export const createTokenController = async (
 
     const token: string = await createSessionService(loginData);
 
-    return res.json({ token });
+    return res.status(200).json({ token });
 }
