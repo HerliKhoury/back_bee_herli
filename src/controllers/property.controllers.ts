@@ -10,7 +10,6 @@ import { listPropertiesService } from "../services/property/listProperties.servi
 import { deletePropertyService } from "../services/property/deleteProperty.service";
 import { updatePropertyService } from "../services/property/updateProperty.service";
 
-
 export const createPropertyController = async (
     req: Request,
     res: Response

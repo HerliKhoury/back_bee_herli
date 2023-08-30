@@ -9,14 +9,12 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = Express();
-const PORT = process.env.PORT;
-
 
 app.use(Express.json());
 
 const cors = require('cors');
 const corsOptions ={
-    origin:`http://localhost:${PORT}`, 
+    origin:"http://localhost:3001", 
     credentials:true,            
     optionSuccessStatus:200
 }

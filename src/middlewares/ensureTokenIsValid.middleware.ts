@@ -2,8 +2,6 @@ import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import { MyError } from "../errors/myError.error";
 
-
-
 export const ensureTokenIsValid = async (
     req: Request,
     res: Response,

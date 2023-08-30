@@ -1,6 +1,5 @@
 import { z } from "zod";
 
-
 export const propertySchema = z.object({
     name: z.string().max(60).nonempty(),
     total_area: z.string().max(20).nonempty(),

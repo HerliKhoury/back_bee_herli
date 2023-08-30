@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { TUserReq, TUserRes } from "../interfaces/user.interfaces";
 import { createUserService } from "../services/user/createUser.service";
 
-
 export const createUserController = async (
     req: Request,
     res: Response
