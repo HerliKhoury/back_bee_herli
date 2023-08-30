@@ -12,3 +12,10 @@ export const createTokenController = async (
 
     return res.status(200).json(response);
 }
+
+export const healthController = (
+    req: Request,
+    res: Response
+):  Response<any, Record<string, any>> => {
+    return res.json({message: `Server is up ${new Date()}`});
+}

@@ -5,6 +5,7 @@ import { propertyRoutes } from "./routes/property.routes";
 import { userRoutes } from "./routes/user.routes";
 import { loginRoutes } from "./routes/login.routes";
 import dotenv from "dotenv";
+import { healthRoutes } from "./routes/health.routes";
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(cors(corsOptions));
 app.use("/login", loginRoutes);
 app.use("/user", userRoutes);
 app.use("/property", propertyRoutes);
+app.use("/health", healthRoutes);
 
 app.use(errorHandler);
 
