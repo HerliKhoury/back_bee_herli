@@ -6,7 +6,7 @@ export const propertySchema = z.object({
     total_area: z.string().max(20).nonempty(),
     built_area: z.string().max(20).nonempty(),
     address: z.string().max(60).nonempty(),
-    zip_code: z.string().max(8).nonempty(),
+    zip_code: z.string().max(20).nonempty(),
     price: z.string().max(20).nonempty()
 });
 
