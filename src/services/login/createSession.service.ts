@@ -1,4 +1,4 @@
-import { TLoginRequest } from "../../interfaces/login.interfaces";
+import { TLoginRequest, TLoginRes } from "../../interfaces/login.interfaces";
 import { Repository } from "typeorm";
 import { User } from "../../entities/user.entity";
 import { AppDataSource } from "../../data-source";
@@ -9,7 +9,7 @@ import jwt from "jsonwebtoken";
 
 export const createSessionService = async (
     loginData: TLoginRequest
-): Promise<string> => {
+): Promise<TLoginRes> => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
     const user: User | null = await userRepo.findOne({
@@ -40,5 +40,9 @@ export const createSessionService = async (
         }
     );
 
-    return token;
+    return {
+            token: token,
+            name: user.name,
+            email: user.email
+            };
 };
