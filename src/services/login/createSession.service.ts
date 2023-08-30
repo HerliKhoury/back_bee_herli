@@ -10,14 +10,13 @@ import jwt from "jsonwebtoken";
 export const createSessionService = async (
     loginData: TLoginRequest
 ): Promise<TLoginRes> => {
-    const userRepo: Repository<User> = AppDataSource.getRepository(User);
 
-    const user: User | null = await userRepo.findOne({
+    const user: any = await AppDataSource.getRepository(User).findOne({
         where: {
             email: loginData.email
-        },
-    });
-
+        }
+    })
+    
     if (!user) {
         throw new MyError("Credênciais inválidas", 401);
     };
