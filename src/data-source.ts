@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from "typeorm";
-import dotenv from "dotenv";
 import { MyError } from "./errors/myError.error";
+import dotenv from "dotenv";
 
 dotenv.config();
 

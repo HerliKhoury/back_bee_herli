@@ -4,13 +4,19 @@ import { errorHandler } from "./errors/errorHandler.error";
 import { propertyRoutes } from "./routes/property.routes";
 import { userRoutes } from "./routes/user.routes";
 import { loginRoutes } from "./routes/login.routes";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = Express();
+const PORT = process.env.PORT;
+
+
 app.use(Express.json());
 
 const cors = require('cors');
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    origin:`http://localhost:${PORT}`, 
     credentials:true,            
     optionSuccessStatus:200
 }
